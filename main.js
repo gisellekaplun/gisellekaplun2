@@ -23,17 +23,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Navbar Scroll Effect ---
+    // --- Navbar Scroll Effect (hide on down, show on up) ---
     const nav = document.getElementById('nav');
     let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
+        const menuOpen = navMenu.classList.contains('active');
+
+        if (currentScroll > lastScroll && currentScroll > 120 && !menuOpen) {
+            nav.classList.add('nav--hidden');
+        } else {
+            nav.classList.remove('nav--hidden');
+        }
+
         if (currentScroll > 50) {
             nav.classList.add('nav--scrolled');
         } else {
             nav.classList.remove('nav--scrolled');
         }
+
         lastScroll = currentScroll;
     });
 
