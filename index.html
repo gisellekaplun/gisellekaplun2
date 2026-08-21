@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
     <header class="nav" id="nav">
         <div class="nav__container">
             <a href="#inicio" class="nav__logo">
-                <img src="assets/logo-nobg.png" alt="Giselle Kaplun SMM" class="nav__logo-img">
+                <img src="logo-nobg.png" alt="Giselle Kaplun SMM" class="nav__logo-img">
             </a>
             <button class="nav__toggle" id="navToggle" aria-label="Menú">
                 <span></span>
@@ -34,24 +34,28 @@
 
     <!-- HERO -->
     <section class="hero" id="inicio">
+        <div class="hero__bg">
+            <img src="hero-img.jpg" alt="" class="hero__bg-img">
+        </div>
         <div class="hero__container">
             <div class="hero__badge">Marketing Digital & Estrategia</div>
-            <h1 class="hero__title">Trabajamos en equipo<br>por tu <span class="hero__accent">marca</span></h1>
-            <p class="hero__subtitle">Más que una agencia de marketing digital, somos tu socio estratégico. Creamos soluciones personalizadas especialmente para tu negocio.</p>
+            <div class="hero__text">
+                <p class="hero__statement">Tu negocio ya tiene una <span class="hero__accent">esencia</span>. Mi trabajo es ayudarte a que los demás también la vean.</p>
+                <p class="hero__body">No trabajo con recetas ni fórmulas mágicas. Trabajo con personas. Escucho, ordeno y construyo una estrategia para que tu negocio comunique con claridad e identidad.</p>
+            </div>
             <div class="hero__actions">
-                <a href="#contacto" class="btn btn--primary">Agendá un meet</a>
-                <a href="#servicios" class="btn btn--outline">Ver servicios</a>
+                <a href="#contacto" class="btn btn--primary">Agendá un meet para asesorarte sin cargo</a>
             </div>
         </div>
         <div class="hero__visual">
             <div class="hero__deco-wrap hero__deco-wrap--1">
-                <img src="assets/logo-nobg.png" alt="" class="hero__deco-img">
+                <img src="logo-nobg.png" alt="" class="hero__deco-img">
             </div>
             <div class="hero__deco-wrap hero__deco-wrap--2">
-                <img src="assets/logo-nobg.png" alt="" class="hero__deco-img">
+                <img src="logo-nobg.png" alt="" class="hero__deco-img">
             </div>
             <div class="hero__deco-wrap hero__deco-wrap--3">
-                <img src="assets/logo-nobg.png" alt="" class="hero__deco-img">
+                <img src="logo-nobg.png" alt="" class="hero__deco-img">
             </div>
         </div>
     </section>
@@ -82,31 +86,25 @@
                     <a href="#contacto" class="servicio-card__link">Consultar precio →</a>
                 </div>
 
-                <!-- Diseño Web -->
-                <div class="servicio-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="servicio-card__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    </div>
-                    <h3 class="servicio-card__title">Diseño Web</h3>
-                    <ul class="servicio-card__list">
-                        <li>Landing informativa</li>
-                        <li>E-commerce (tienda online hasta 50 ítems)</li>
-                    </ul>
-                    <a href="#contacto" class="servicio-card__link">Consultar precio →</a>
-                </div>
-
                 <!-- Tu Vidriera Digital -->
-                <div class="servicio-card servicio-card--featured" data-aos="fade-up" data-aos-delay="200">
+                <div class="servicio-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="servicio-card__icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     </div>
                     <h3 class="servicio-card__title">Tu Vidriera 24/7</h3>
                     <p class="servicio-card__text">Trabajamos en tu ecosistema digital para que tu vidriera sea tan atractiva como la de tu negocio físico.</p>
+                    <ul class="servicio-card__list">
+                        <li>Ficha de Google My Business</li>
+                        <li>Branding: Identidad de tu marca</li>
+                        <li>Feed inicial de 6 posts</li>
+                        <li>Landing informativa</li>
+                        <li>Consultoría 1:1</li>
+                    </ul>
                     <a href="#contacto" class="servicio-card__link">Consultar precio →</a>
                 </div>
 
                 <!-- Redes Sociales -->
-                <div class="servicio-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="servicio-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="servicio-card__icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                     </div>
@@ -121,6 +119,19 @@
                     </ul>
                     <a href="#contacto" class="servicio-card__link">Consultar precio →</a>
                 </div>
+
+                <!-- Diseño Web -->
+                <div class="servicio-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="servicio-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3 class="servicio-card__title">Diseño Web</h3>
+                    <ul class="servicio-card__list">
+                        <li>Landing informativa</li>
+                        <li>E-commerce (tienda online hasta 50 ítems)</li>
+                    </ul>
+                    <a href="#contacto" class="servicio-card__link">Consultar precio →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -129,37 +140,18 @@
     <section class="equipo" id="equipo">
         <div class="equipo__container">
             <div class="section-header">
-                <span class="section-tag">Quiénes Somos</span>
-                <h2 class="section-title">Un team que se pone la camiseta</h2>
-                <p class="section-desc">Comenzamos este proyecto capitalizando nuestra experiencia en diferentes áreas de comunicación trabajando en compañías multinacionales y hoy decidimos iniciar un camino trabajando con pymes y negocios de proximidad.</p>
+                <span class="section-tag">Sobre mí</span>
+                <h2 class="section-title">Conocé quién está detrás</h2>
             </div>
 
-            <div class="equipo__grid">
-                <div class="equipo-card" data-aos="fade-up">
-                    <div class="equipo-card__img">
-                        <img src="assets/foto-perfil.png" alt="Giselle Kaplun">
-                    </div>
-                    <h3 class="equipo-card__name">Giselle Kaplun</h3>
-                    <p class="equipo-card__role">CEO & Project Manager</p>
+            <div class="equipo__about">
+                <div class="equipo__about-img" data-aos="fade-right">
+                    <img src="foto-perfil.png" alt="Giselle Kaplun">
                 </div>
-                <div class="equipo-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="equipo-card__img equipo-card__img--placeholder">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                    <h3 class="equipo-card__name">Juanita</h3>
-                    <p class="equipo-card__role">Diseño Web</p>
+                <div class="equipo__about-text" data-aos="fade-left">
+                    <p>Mi objetivo está centrado en potenciar, tanto la imagen de tu marca como en buscar nuevas estrategias para optimizar tus resultados. Tengo más de 15 años trabajando en la industria de la moda y el márketing.</p>
+                    <p>En mí coexiste un mix único entre skills comerciales y creativos.</p>
                 </div>
-                <div class="equipo-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="equipo-card__img equipo-card__img--placeholder">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                    <h3 class="equipo-card__name">Victoria</h3>
-                    <p class="equipo-card__role">Diseñadora Gráfica</p>
-                </div>
-            </div>
-
-            <div class="equipo__mision" data-aos="fade-up">
-                <p>Nuestro objetivo está centrado en potenciar, tanto la imagen de tu marca como en buscar nuevas estrategias para optimizar tus resultados.</p>
             </div>
         </div>
     </section>
@@ -224,10 +216,6 @@
     <footer class="footer">
         <div class="footer__container">
             <div class="footer__top">
-                <div class="footer__brand">
-                    <img src="assets/logo-nobg.png" alt="Giselle Kaplun SMM" class="footer__logo">
-                    <p>Somos tu socio estratégico en marketing digital. Soluciones personalizadas para potenciar tu marca.</p>
-                </div>
                 <div class="footer__links">
                     <h4>Navegación</h4>
                     <a href="#inicio">Inicio</a>
@@ -246,8 +234,8 @@
             <div class="footer__bottom">
                 <p>&copy; 2026 Giselle Kaplun SMM. Todos los derechos reservados.</p>
                 <div class="footer__social">
-                    <a href="https://wa.link/1eo5oe" target="_blank" rel="noopener" aria-label="WhatsApp">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <a href="https://www.instagram.com/gisellekaplun/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     </a>
                     <a href="mailto:gisellekaplun@gmail.com" aria-label="Email">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -262,6 +250,6 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
-    <script src="js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
