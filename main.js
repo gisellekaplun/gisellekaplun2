@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const nombre = document.getElementById('nombre').value;
             const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
             const mensaje = document.getElementById('mensaje').value;
 
             const btn = contactForm.querySelector('.btn');
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({
                         nombre: nombre,
                         email: email,
+                        telefono: telefono,
                         mensaje: mensaje
                     })
                 });
