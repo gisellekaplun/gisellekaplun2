@@ -87,29 +87,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Form Handling ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const nombre = document.getElementById('nombre').value;
             const email = document.getElementById('email').value;
             const mensaje = document.getElementById('mensaje').value;
 
-            // Construct mailto link
-            const subject = encodeURIComponent(`Consulta de ${nombre} - Giselle Kaplun SMM`);
-            const body = encodeURIComponent(`Hola Giselle,\n\nMi nombre es ${nombre}.\n\n${mensaje}\n\nSaludos,\n${nombre}\n${email}`);
-            window.location.href = `mailto:gisellekaplun@gmail.com?subject=${subject}&body=${body}`;
-
-            // Reset form
-            contactForm.reset();
-
-            // Show success feedback
             const btn = contactForm.querySelector('.btn');
             const originalText = btn.textContent;
-            btn.textContent = '¡Mensaje enviado!';
-            btn.style.background = '#25D366';
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            try {
+                const response = await fetch('https://formspree.io/f/mdeoygrv', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre: nombre,
+                        email: email,
+                        mensaje: mensaje
+                    })
+                });
+
+                if (response.ok) {
+                    contactForm.reset();
+                    btn.textContent = '¡Mensaje enviado!';
+                    btn.style.background = '#25D366';
+                } else {
+                    btn.textContent = 'Hubo un error, intentá de nuevo';
+                    btn.style.background = '#E1524D';
+                }
+            } catch (error) {
+                btn.textContent = 'Hubo un error, intentá de nuevo';
+                btn.style.background = '#E1524D';
+            }
+
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.style.background = '';
+                btn.disabled = false;
             }, 3000);
         });
     }
