@@ -261,4 +261,172 @@ document.addEventListener('DOMContentLoaded', () => {
         initAccordion(faqFull);
     }
 
+    // --- Carrusel de identificación (situaciones) ---
+    // Los SVG en img/situations son placeholders. Para usar fotografía real,
+    // reemplazá cada archivo y actualizá la ruta en image.
+    const situations = [
+        { title: "Tenés un buen negocio, pero online no se nota.", image: "img/situations/sit-1.jpg", alt: "Local comercial callejero con productos visibles pero presencia digital desactualizada." },
+        { title: "Publicás, pero no sabés para qué.", image: "img/situations/sit-2.jpg", alt: "Mujer pensando frente a su laptop mientras revisa las publicaciones de su negocio." },
+        { title: "Tu negocio está en todos lados, pero cada canal dice algo distinto.", image: "img/situations/sit-3.jpg", alt: "Mesa con celular, laptop, cuaderno y café: múltiples canales descoordinados." },
+        { title: "Sabés perfectamente lo que hacés, pero te cuesta explicarlo.", image: "img/situations/sit-4.jpg", alt: "Dueña de un negocio local atendiendo a una cliente, intentando explicar su producto." },
+        { title: "Tenés mil ideas y no sabés por dónde empezar.", image: "img/situations/sit-5.jpg", alt: "Escritorio con post-its de colores, gráficos y cuaderno de planificación, lleno de ideas sin orden." },
+        { title: "Tu negocio depende demasiado del boca en boca.", image: "img/situations/sit-6.jpg", alt: "Dos personas conversando en un café, recomendándose negocios de palabra." },
+        { title: "Sentís que cada vez que publicás terminás vendiendo.", image: "img/situations/sit-7.jpg", alt: "Pantallas de laptop y celular mostrando tiendas online y medios de pago." },
+        { title: "Todo lo urgente le gana a la estrategia.", image: "img/situations/sit-8.jpg", alt: "Emprendedora multitasking: habla por celular mientras trabaja en su laptop en un café." }
+    ];
+
+    const identCarousel = document.getElementById('situacionesCarousel');
+    const identTrack = document.getElementById('situacionesTrack');
+
+    if (identCarousel && identTrack) {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function slideHTML(s, i, clone) {
+            return `<li class="identificacion__slide"${clone ? ' aria-hidden="true"' : ''}>
+                <div class="identificacion__img">
+                    <span class="identificacion__num">${String(i + 1).padStart(2, '0')}</span>
+                    <img src="${s.image}" alt="${clone ? '' : s.alt}"${clone ? ' aria-hidden="true"' : ''} loading="lazy" width="800" height="600">
+                </div>
+                <div class="identificacion__body">
+                    <p class="identificacion__title">${s.title}</p>
+                </div>
+            </li>`;
+        }
+
+        identTrack.innerHTML =
+            situations.map((s, i) => slideHTML(s, i, false)).join('') +
+            situations.map((s, i) => slideHTML(s, i, true)).join('');
+
+        const slideEls = identTrack.children;
+        const gap = parseFloat(getComputedStyle(identTrack).columnGap) || 24;
+        const SPEED = 40; // px/s: lento y elegante
+
+        let setWidth = 0;
+        let pos = 0;
+        let raf = 0;
+        let lastTs = 0;
+        let paused = false;
+        let dragging = false;
+        let inView = true;
+
+        function measure() {
+            setWidth = slideEls.length ? slideEls[situations.length].offsetLeft : 1;
+        }
+
+        function wrap(v) {
+            if (!setWidth) return 0;
+            v %= setWidth;
+            return v < 0 ? v + setWidth : v;
+        }
+
+        function render() {
+            identTrack.style.transform = `translate3d(${-pos}px, 0, 0)`;
+        }
+
+        function step(ts) {
+            if (paused || dragging || reducedMotion.matches || !inView || !setWidth) {
+                raf = 0;
+                return;
+            }
+            if (!lastTs) lastTs = ts;
+            const dt = Math.min(ts - lastTs, 100);
+            lastTs = ts;
+            pos = wrap(pos + (SPEED * dt) / 1000);
+            render();
+            raf = requestAnimationFrame(step);
+        }
+
+        function start() {
+            if (paused || reducedMotion.matches || !inView) return;
+            cancelAnimationFrame(raf);
+            lastTs = 0;
+            raf = requestAnimationFrame(step);
+        }
+
+        function stop() {
+            cancelAnimationFrame(raf);
+            raf = 0;
+        }
+
+        measure();
+        render();
+
+        // Pausa al pasar el mouse, reanuda al salir
+        identCarousel.addEventListener('pointerenter', () => { paused = true; stop(); });
+        identCarousel.addEventListener('pointerleave', () => { paused = false; start(); });
+
+        // Arrastre con mouse / swipe en touch
+        let startX = 0;
+        let startPos = 0;
+        let resumeTimer = 0;
+
+        identCarousel.addEventListener('pointerdown', (e) => {
+            dragging = true;
+            paused = true;
+            stop();
+            identCarousel.classList.add('dragging');
+            startX = e.clientX;
+            startPos = pos;
+            identCarousel.setPointerCapture(e.pointerId);
+        });
+
+        identCarousel.addEventListener('pointermove', (e) => {
+            if (!dragging) return;
+            const dx = e.clientX - startX;
+            pos = wrap(startPos - dx);
+            render();
+        });
+
+        function endDrag() {
+            if (!dragging) return;
+            dragging = false;
+            identCarousel.classList.remove('dragging');
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => {
+                paused = false;
+                start();
+            }, 3000);
+        }
+
+        identCarousel.addEventListener('pointerup', endDrag);
+        identCarousel.addEventListener('pointercancel', endDrag);
+
+        // Navegación con teclado
+        identCarousel.addEventListener('keydown', (e) => {
+            const stepWidth = slideEls.length ? slideEls[0].offsetWidth + gap : 0;
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                pos = wrap(pos + stepWidth);
+                render();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                pos = wrap(pos - stepWidth);
+                render();
+            }
+        });
+
+        // Solo anima cuando la sección está visible
+        const viewObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                inView = entry.isIntersecting;
+                if (inView) start();
+                else stop();
+            });
+        });
+        viewObserver.observe(identCarousel);
+
+        // Reajuste al cambiar el viewport
+        let reflowTimer = 0;
+        window.addEventListener('resize', () => {
+            clearTimeout(reflowTimer);
+            reflowTimer = setTimeout(() => {
+                measure();
+                pos = wrap(pos);
+                render();
+            }, 150);
+        });
+
+        start();
+    }
+
 });

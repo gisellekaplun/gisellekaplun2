@@ -216,18 +216,12 @@ ul {
     opacity: 0.3;
 }
 
-.hero__badge {
-    display: inline-block;
-    padding: 8px 20px;
-    background: rgba(62,180,137,0.15);
-    color: var(--mint-light);
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(62,180,137,0.3);
+.hero__h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    color: var(--lemon);
     margin-bottom: 24px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
 }
 
 .hero__text {
@@ -1077,6 +1071,159 @@ ul {
     transform: translateY(0);
 }
 
+/* =========================================
+   IDENTIFICACIÓN - Carrusel continuo
+   ========================================= */
+.identificacion {
+    padding: 100px 24px;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.identificacion__container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.identificacion__header {
+    margin-bottom: 56px;
+}
+
+.identificacion__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.25;
+}
+
+.identificacion__desc {
+    font-size: 1.1rem;
+    color: var(--gray-500);
+    max-width: 560px;
+    line-height: 1.7;
+}
+
+.identificacion__carousel {
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+    outline: none;
+}
+
+.identificacion__carousel.dragging {
+    cursor: grabbing;
+}
+
+.identificacion__carousel:focus-visible {
+    outline: 2px solid var(--mint);
+    outline-offset: 4px;
+    border-radius: var(--radius-lg);
+}
+
+.identificacion__track {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    width: max-content;
+    list-style: none;
+    padding: 8px 0 14px;
+    position: relative;
+    will-change: transform;
+}
+
+.identificacion__slide {
+    flex: 0 0 auto;
+    width: min(400px, calc((100vw - 96px) / 2.5));
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    position: relative;
+}
+
+.identificacion__slide:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(62, 180, 137, 0.5);
+}
+
+.identificacion__img {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--dark-soft);
+}
+
+.identificacion__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.identificacion__slide:hover .identificacion__img img {
+    transform: scale(1.04);
+}
+
+.identificacion__num {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--dark);
+    background: var(--lemon);
+    border-radius: var(--radius-sm);
+    padding: 5px 11px;
+}
+
+.identificacion__body {
+    padding: 26px 26px 30px;
+}
+
+.identificacion__title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--white);
+}
+
+.identificacion__slide:hover .identificacion__title {
+    color: var(--mint-light);
+}
+
+.identificacion__scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 34px;
+    font-size: 0.85rem;
+    color: var(--gray-400);
+}
+
+.identificacion__scroll-hint::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mint), var(--lemon));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .identificacion__track {
+        will-change: auto;
+    }
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .page-deco {
@@ -1087,6 +1234,22 @@ ul {
 @media (max-width: 768px) {
     .nav__toggle {
         display: flex;
+    }
+
+    .identificacion {
+        padding: 80px 20px;
+    }
+
+    .identificacion__slide {
+        width: calc((100vw - 48px) / 1.28);
+    }
+
+    .identificacion__body {
+        padding: 22px 22px 26px;
+    }
+
+    .identificacion__title {
+        font-size: 1.02rem;
     }
 
     .nav__menu {
@@ -1190,6 +1353,10 @@ ul {
 
     .section-title {
         font-size: 1.8rem;
+    }
+
+    .identificacion__slide {
+        width: calc((100vw - 48px) / 1.15);
     }
 
     .equipo__about-text p {
