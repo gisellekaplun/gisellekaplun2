@@ -50,7 +50,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 110px;
+    scroll-padding-top: 176px;
 }
 
 body {
@@ -122,11 +122,11 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 92px;
+    height: 160px;
 }
 
 .nav__logo-img {
-    height: 78px;
+    height: 156px;
     width: auto;
 }
 
@@ -210,7 +210,7 @@ ul {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding: 120px 24px 80px;
+    padding: 176px 24px 80px;
     background-color: var(--beige-bg);
 }
 
@@ -1388,7 +1388,7 @@ ul {
 
     .hero {
         min-height: auto;
-        padding: 170px 24px 60px;
+        padding: 200px 24px 60px;
     }
 
     .hero__statement {
