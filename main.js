@@ -273,10 +273,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!track || !prev || !next) return;
 
     var situaciones = [
-        { numero: 1, titulo: "Tenés un buen producto ó servicio, pero te cuesta reflejarlo online.", texto: "Cuando alguien lo ve en redes, Google o WhatsApp no encuentra todo eso que hace que te elijan. Tu presencia digital no está a la altura de lo que realmente ofrecés.", imagen: "img/situations/sit 1.webp" },
-        { numero: 2, titulo: "Estás en todas las áreas, no sabés qué priorizar.", texto: "Tenés mil ideas, herramientas y cosas pendientes. Querés hacer crecer tu negocio, pero terminás resolviendo lo urgente y postergando lo que realmente necesitás ordenar.", imagen: "img/situations/sit 2.webp" },
-        { numero: 3, titulo: "Publicás, pero sin un criterio", texto: "Subís contenido porque sabés que tenés que estar presente, pero no siempre sabés qué decir, para qué publicarlo o cómo convertir esa presencia en oportunidades reales para tu negocio.", imagen: "img/situations/sit 3.webp" },
-        { numero: 4, titulo: "Sabés lo que hacés, pero te cuesta destacar tu diferencial", texto: "Conocés tu producto o servicio mejor que nadie. Sin embargo, cuando tenés que contar qué hacés, para quién es o por qué deberían elegirte.", imagen: "img/situations/sit 4.webp" }
+        { numero: 1, titulo: "Tenés un buen producto ó servicio, pero te cuesta reflejarlo online.", texto: "Cuando alguien lo ve en redes, Google o WhatsApp no encuentra todo eso que hace que te elijan. Tu presencia digital no está a la altura de lo que realmente ofrecés.", imagen: "situations/sit 1.webp" },
+        { numero: 2, titulo: "Estás en todas las áreas, no sabés qué priorizar.", texto: "Tenés mil ideas, herramientas y cosas pendientes. Querés hacer crecer tu negocio, pero terminás resolviendo lo urgente y postergando lo que realmente necesitás ordenar.", imagen: "situations/sit 2.webp" },
+        { numero: 3, titulo: "Publicás, pero sin un criterio", texto: "Subís contenido porque sabés que tenés que estar presente, pero no siempre sabés qué decir, para qué publicarlo o cómo convertir esa presencia en oportunidades reales para tu negocio.", imagen: "situations/sit 3.webp" },
+        { numero: 4, titulo: "Sabés lo que hacés, pero te cuesta destacar tu diferencial", texto: "Conocés tu producto o servicio mejor que nadie. Sin embargo, cuando tenés que contar qué hacés, para quién es o por qué deberían elegirte.", imagen: "situations/sit 4.webp" }
     ];
 
     function tarjetaHTML(s) {
