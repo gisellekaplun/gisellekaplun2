@@ -261,172 +261,148 @@ document.addEventListener('DOMContentLoaded', () => {
         initAccordion(faqFull);
     }
 
-    // --- Carrusel de identificación (situaciones) ---
-    // Los SVG en img/situations son placeholders. Para usar fotografía real,
-    // reemplazá cada archivo y actualizá la ruta en image.
-    const situations = [
-        { title: "Tenés un buen negocio, pero online no se nota.", image: "img/situations/sit-1.jpg", alt: "Local comercial callejero con productos visibles pero presencia digital desactualizada." },
-        { title: "Publicás, pero no sabés para qué.", image: "img/situations/sit-2.jpg", alt: "Mujer pensando frente a su laptop mientras revisa las publicaciones de su negocio." },
-        { title: "Tu negocio está en todos lados, pero cada canal dice algo distinto.", image: "img/situations/sit-3.jpg", alt: "Mesa con celular, laptop, cuaderno y café: múltiples canales descoordinados." },
-        { title: "Sabés perfectamente lo que hacés, pero te cuesta explicarlo.", image: "img/situations/sit-4.jpg", alt: "Dueña de un negocio local atendiendo a una cliente, intentando explicar su producto." },
-        { title: "Tenés mil ideas y no sabés por dónde empezar.", image: "img/situations/sit-5.jpg", alt: "Escritorio con post-its de colores, gráficos y cuaderno de planificación, lleno de ideas sin orden." },
-        { title: "Tu negocio depende demasiado del boca en boca.", image: "img/situations/sit-6.jpg", alt: "Dos personas conversando en un café, recomendándose negocios de palabra." },
-        { title: "Sentís que cada vez que publicás terminás vendiendo.", image: "img/situations/sit-7.jpg", alt: "Pantallas de laptop y celular mostrando tiendas online y medios de pago." },
-        { title: "Todo lo urgente le gana a la estrategia.", image: "img/situations/sit-8.jpg", alt: "Emprendedora multitasking: habla por celular mientras trabaja en su laptop en un café." }
+    
+
+    });
+
+/* ============ CARRUSEL ¿SENTÍS QUE TE PASA? (4 tarjetas, loop infinito) ============ */
+document.addEventListener("DOMContentLoaded", function () {
+    var track = document.getElementById("situacionesTrack");
+    var prev = document.getElementById("situacionesPrev");
+    var next = document.getElementById("situacionesNext");
+    if (!track || !prev || !next) return;
+
+    var situaciones = [
+        { numero: 1, titulo: "Tenés un buen producto ó servicio, pero te cuesta reflejarlo online.", texto: "Cuando alguien lo ve en redes, Google o WhatsApp no encuentra todo eso que hace que te elijan. Tu presencia digital no está a la altura de lo que realmente ofrecés.", imagen: "img/situations/sit 1.webp" },
+        { numero: 2, titulo: "Estás en todas las áreas, no sabés qué priorizar.", texto: "Tenés mil ideas, herramientas y cosas pendientes. Querés hacer crecer tu negocio, pero terminás resolviendo lo urgente y postergando lo que realmente necesitás ordenar.", imagen: "img/situations/sit 2.webp" },
+        { numero: 3, titulo: "Publicás, pero sin un criterio", texto: "Subís contenido porque sabés que tenés que estar presente, pero no siempre sabés qué decir, para qué publicarlo o cómo convertir esa presencia en oportunidades reales para tu negocio.", imagen: "img/situations/sit 3.webp" },
+        { numero: 4, titulo: "Sabés lo que hacés, pero te cuesta destacar tu diferencial", texto: "Conocés tu producto o servicio mejor que nadie. Sin embargo, cuando tenés que contar qué hacés, para quién es o por qué deberían elegirte.", imagen: "img/situations/sit 4.webp" }
     ];
 
-    const identCarousel = document.getElementById('situacionesCarousel');
-    const identTrack = document.getElementById('situacionesTrack');
-
-    if (identCarousel && identTrack) {
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-        function slideHTML(s, i, clone) {
-            return `<li class="identificacion__slide"${clone ? ' aria-hidden="true"' : ''}>
-                <div class="identificacion__img">
-                    <span class="identificacion__num">${String(i + 1).padStart(2, '0')}</span>
-                    <img src="${s.image}" alt="${clone ? '' : s.alt}"${clone ? ' aria-hidden="true"' : ''} loading="lazy" width="800" height="600">
-                </div>
-                <div class="identificacion__body">
-                    <p class="identificacion__title">${s.title}</p>
-                </div>
-            </li>`;
-        }
-
-        identTrack.innerHTML =
-            situations.map((s, i) => slideHTML(s, i, false)).join('') +
-            situations.map((s, i) => slideHTML(s, i, true)).join('');
-
-        const slideEls = identTrack.children;
-        const gap = parseFloat(getComputedStyle(identTrack).columnGap) || 24;
-        const SPEED = 40; // px/s: lento y elegante
-
-        let setWidth = 0;
-        let pos = 0;
-        let raf = 0;
-        let lastTs = 0;
-        let paused = false;
-        let dragging = false;
-        let inView = true;
-
-        function measure() {
-            setWidth = slideEls.length ? slideEls[situations.length].offsetLeft : 1;
-        }
-
-        function wrap(v) {
-            if (!setWidth) return 0;
-            v %= setWidth;
-            return v < 0 ? v + setWidth : v;
-        }
-
-        function render() {
-            identTrack.style.transform = `translate3d(${-pos}px, 0, 0)`;
-        }
-
-        function step(ts) {
-            if (paused || dragging || reducedMotion.matches || !inView || !setWidth) {
-                raf = 0;
-                return;
-            }
-            if (!lastTs) lastTs = ts;
-            const dt = Math.min(ts - lastTs, 100);
-            lastTs = ts;
-            pos = wrap(pos + (SPEED * dt) / 1000);
-            render();
-            raf = requestAnimationFrame(step);
-        }
-
-        function start() {
-            if (paused || reducedMotion.matches || !inView) return;
-            cancelAnimationFrame(raf);
-            lastTs = 0;
-            raf = requestAnimationFrame(step);
-        }
-
-        function stop() {
-            cancelAnimationFrame(raf);
-            raf = 0;
-        }
-
-        measure();
-        render();
-
-        // Pausa al pasar el mouse, reanuda al salir
-        identCarousel.addEventListener('pointerenter', () => { paused = true; stop(); });
-        identCarousel.addEventListener('pointerleave', () => { paused = false; start(); });
-
-        // Arrastre con mouse / swipe en touch
-        let startX = 0;
-        let startPos = 0;
-        let resumeTimer = 0;
-
-        identCarousel.addEventListener('pointerdown', (e) => {
-            dragging = true;
-            paused = true;
-            stop();
-            identCarousel.classList.add('dragging');
-            startX = e.clientX;
-            startPos = pos;
-            identCarousel.setPointerCapture(e.pointerId);
-        });
-
-        identCarousel.addEventListener('pointermove', (e) => {
-            if (!dragging) return;
-            const dx = e.clientX - startX;
-            pos = wrap(startPos - dx);
-            render();
-        });
-
-        function endDrag() {
-            if (!dragging) return;
-            dragging = false;
-            identCarousel.classList.remove('dragging');
-            clearTimeout(resumeTimer);
-            resumeTimer = setTimeout(() => {
-                paused = false;
-                start();
-            }, 3000);
-        }
-
-        identCarousel.addEventListener('pointerup', endDrag);
-        identCarousel.addEventListener('pointercancel', endDrag);
-
-        // Navegación con teclado
-        identCarousel.addEventListener('keydown', (e) => {
-            const stepWidth = slideEls.length ? slideEls[0].offsetWidth + gap : 0;
-            if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                pos = wrap(pos + stepWidth);
-                render();
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                pos = wrap(pos - stepWidth);
-                render();
-            }
-        });
-
-        // Solo anima cuando la sección está visible
-        const viewObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                inView = entry.isIntersecting;
-                if (inView) start();
-                else stop();
-            });
-        });
-        viewObserver.observe(identCarousel);
-
-        // Reajuste al cambiar el viewport
-        let reflowTimer = 0;
-        window.addEventListener('resize', () => {
-            clearTimeout(reflowTimer);
-            reflowTimer = setTimeout(() => {
-                measure();
-                pos = wrap(pos);
-                render();
-            }, 150);
-        });
-
-        start();
+    function tarjetaHTML(s) {
+        return '<li class="situaciones__card" role="group" aria-roledescription="slide" aria-label="Situación ' + s.numero + ' de 4">' +
+            '<span class="situaciones__card-num">0' + s.numero + '</span>' +
+            '<img class="situaciones__card-img" src="' + s.imagen + '" alt="Ilustración de la situación ' + s.numero + '" loading="lazy">' +
+            '<h3 class="situaciones__card-title">' + s.titulo + '</h3>' +
+            '<p class="situaciones__card-text">' + s.texto + '</p>' +
+            '</li>';
     }
 
+    // dos copias del set => loop infinito sin salto al volver al inicio
+    track.innerHTML = situaciones.map(tarjetaHTML).join("") + situaciones.map(tarjetaHTML).join("");
+
+    var tarjetas = track.children;
+    var pos = 0;
+    var setAncho = 0;    // ancho de 4 tarjetas + gaps (un set)
+    var trackAncho = 0;  // ancho total = setAncho * 2
+    var autoplay = null;
+    var parado = false;
+    var moviendo = false, inicioX = 0, inicioPos = 0;
+    var VEL = 0.6;       // px por frame (lento y elegante)
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function medir() {
+        var w = 0;
+        for (var i = 0; i < situaciones.length; i++) {
+            w += tarjetas[i].getBoundingClientRect().width + 12;
+        }
+        setAncho = w;
+        trackAncho = w * 2;
+    }
+
+    // --cards-visible por breakpoint
+    function cardsResponsive() {
+        var vp = track.parentElement.clientWidth;
+        var vis = vp < 760 ? 1.2 : 2.2;
+        document.documentElement.style.setProperty("--cards-visible", vis);
+        document.documentElement.style.setProperty("--cards-movil", vis < 2 ? 1.2 : 2.2);
+    }
+    cardsResponsive();
+    window.addEventListener("resize", function () { cardsResponsive(); medir(); });
+
+    function pintar(sinTransicion) {
+        track.style.transition = sinTransicion ? "none" : "transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)";
+        track.style.transform = "translateX(" + (-pos) + "px)";
+    }
+
+    function loop() {
+        if (parado) return;
+        pos += VEL;
+        if (pos >= setAncho) pos -= setAncho; // rebobinar sin salto visual
+        pintar(true);
+    }
+
+    function arrancar() {
+        if (parado || autoplay || reduceMotion) return;
+        autoplay = window.setInterval(loop, 16);
+    }
+    function parar() {
+        if (autoplay) { window.clearInterval(autoplay); autoplay = null; }
+    }
+    function reanudar() {
+        if (!parado) arrancar();
+    }
+
+    medir();
+    pintar(false);
+
+    function ir(dir) {
+        parar();
+        var paso = tarjetas[0].getBoundingClientRect().width + 12;
+        pos += dir * paso;
+        if (pos < 0) pos = 0;
+        if (pos > trackAncho - (paso * 2)) pos = trackAncho - (paso * 2);
+        pintar(false);
+        reanudar();
+    }
+    next.addEventListener("click", function () { ir(1); });
+    prev.addEventListener("click", function () { ir(-1); });
+
+    track.setAttribute("tabindex", "0");
+    track.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { e.preventDefault(); ir(1); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); ir(-1); }
+    });
+
+    track.addEventListener("pointerdown", function (e) {
+        parar();
+        moviendo = true;
+        inicioX = e.clientX;
+        inicioPos = pos;
+        if (track.setPointerCapture) { try { track.setPointerCapture(e.pointerId); } catch (err) {} }
+    });
+    track.addEventListener("pointermove", function (e) {
+        if (!moviendo) return;
+        var dx = e.clientX - inicioX;
+        pos = inicioPos - dx;
+        if (pos < 0) pos = 0;
+        pintar(true);
+    });
+    track.addEventListener("pointerup", function (e) {
+        if (!moviendo) return;
+        moviendo = false;
+        var dx = e.clientX - inicioX;
+        if (Math.abs(dx) > 40) {
+            ir(dx < 0 ? 1 : -1);
+        } else {
+            var paso = tarjetas[0].getBoundingClientRect().width + 12;
+            var idx = Math.round(pos / paso);
+            pos = idx * paso;
+            pintar(false);
+            reanudar();
+        }
+    });
+    track.addEventListener("pointerleave", function () { moviendo = false; });
+
+    // pausa al interactuar
+    track.addEventListener("mouseenter", parar);
+    track.addEventListener("mouseleave", reanudar);
+    track.addEventListener("focus", parar);
+    track.addEventListener("blur", reanudar);
+    document.addEventListener("visibilitychange", function () {
+        document.hidden ? parar() : reanudar();
+    });
+
+    arrancar();
 });

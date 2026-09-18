@@ -133,23 +133,26 @@
         </div>
     </section>
 
-    <!-- QUIÉNES SOMOS -->
-    <!-- IDENTIFICACIÓN -->
-    <section class="identificacion" id="identificacion" aria-label="¿Te sentís identificada?">
-        <div class="identificacion__container">
-            <div class="identificacion__header">
-                <h2 class="identificacion__title">¿Te identificás?</h2>
-                <p class="identificacion__desc">Quizás alguna de estas situaciones te resulte demasiado conocida.</p>
+    
+<!-- ¿TE SENTÍS IDENTIFICADA? -->
+<section class="situaciones" id="situaciones" aria-labelledby="situaciones-titulo">
+    <div class="situaciones__content">
+        <h2 class="situaciones__title" id="situaciones-titulo">¿TE SENTÍS IDENTIFICADA?</h2>
+        <div class="situaciones__carousel" id="situacionesCarousel" role="region" aria-roledescription="carrusel" aria-label="Situaciones frecuentes que acompañamos">
+            <div class="situaciones__viewport" id="situacionesViewport">
+                <ul class="situaciones__track" id="situacionesTrack" tabindex="0" aria-label="Carrusel de situaciones - desliza con el mouse o el dedo">
+                    <!-- 4 tarjetas (2 copias) renderizadas por main.js -->
+                </ul>
             </div>
-
-            <div class="identificacion__carousel" id="situacionesCarousel" role="region" aria-label="Situaciones frecuentes de un negocio" tabindex="0">
-                <ul class="identificacion__track" id="situacionesTrack"></ul>
+            <div class="situaciones__controls">
+                <button type="button" class="situaciones__btn situaciones__btn--prev" id="situacionesPrev" aria-label="Situación anterior">&#8592;</button>
+                <button type="button" class="situaciones__btn situaciones__btn--next" id="situacionesNext" aria-label="Situación siguiente">&#8594;</button>
             </div>
-
-            <p class="identificacion__scroll-hint" aria-hidden="true">Deslizá para seguir recorriendo</p>
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- QUIÉNES SOMOS -->
     <section class="equipo" id="equipo">
         <div class="equipo__container">
             <div class="section-header">
