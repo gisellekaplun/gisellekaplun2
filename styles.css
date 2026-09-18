@@ -26,8 +26,10 @@
     --text-dark:   #2B2B28;
     --white:       #FFFFFF;
 
-    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Manrope', Arial, sans-serif;
+    --font-heading: var(--serif);
+    --font-body: var(--sans);
     --shadow-sm: 0 1px 3px rgba(31, 61, 43, 0.12);
     --shadow-md: 0 4px 20px rgba(31, 61, 43, 0.12);
     --shadow-lg: 0 10px 40px rgba(31, 61, 43, 0.16);
@@ -70,6 +72,23 @@ a {
     text-decoration: none;
     color: inherit;
     transition: var(--transition);
+}
+
+h1, h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+}
+
+h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+}
+
+h1 em, h2 em {
+    color: var(--terracota);
+    font-style: italic;
 }
 
 ul {
@@ -235,7 +254,7 @@ ul {
 .hero__h1 {
     font-family: var(--font-heading);
     font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 500;
+    font-weight: 400;
     color: var(--green-deep);
     margin-bottom: 24px;
 }
@@ -248,8 +267,9 @@ ul {
 .hero__statement {
     font-family: var(--font-heading);
     font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-    font-weight: 600;
-    line-height: 1.4;
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
     margin-bottom: 20px;
     color: var(--green-deep);
 }
@@ -433,10 +453,11 @@ ul {
 .section-title {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    font-weight: 400;
+    letter-spacing: -0.035em;
     color: var(--green-deep);
     margin-bottom: 16px;
-    line-height: 1.2;
+    line-height: 1.02;
 }
 
 .section-subtitle {
@@ -533,7 +554,9 @@ ul {
 .servicio-card__title {
     font-family: var(--font-heading);
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
     margin-bottom: 16px;
     color: var(--green-deep);
 }
@@ -723,6 +746,10 @@ ul {
 
 .contacto .section-title {
     color: var(--beige-bg);
+}
+
+.contacto h2 em {
+    color: var(--mint-soft);
 }
 
 .contacto .section-desc {
@@ -1079,7 +1106,9 @@ ul {
 .faq-cta__title {
     font-family: var(--font-heading);
     font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
     color: var(--green-deep);
     margin-bottom: 12px;
 }
@@ -1117,7 +1146,8 @@ ul {
 .situaciones__title {
     font-family: var(--font-heading);
     font-size: clamp(1.4rem, 3.2vw, 2.1rem);
-    font-weight: 700;
+    font-weight: 400;
+    letter-spacing: -0.035em;
     color: var(--green-deep);
     text-transform: uppercase;
     text-align: center;
