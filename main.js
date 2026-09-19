@@ -405,4 +405,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     arrancar();
+
+    // --- Lucide Icons ---
+    if (window.lucide) {
+        lucide.createIcons();
+    }
 });

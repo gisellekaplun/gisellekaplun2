@@ -22,6 +22,11 @@
     --terracota:        #AF4D35;
     --terracota-soft:   #A04730;
 
+    /* Ink / Paper - modo negativo (bloque "¿No sabés cuál necesitás?") */
+    --ink:          #1D1C1A;
+    --paper:        #F4F0E8;
+    --terracota-ink: #E4946C;
+
     /* Neutros */
     --text-dark:   #2B2B28;
     --white:       #FFFFFF;
@@ -590,18 +595,19 @@ ul {
 .services-fallback {
     margin-top: 64px;
     padding: 48px 32px;
-    background-color: var(--beige-bg);
-    border: 1px solid rgba(175, 77, 53, 0.35);
+    background-color: var(--ink, #1D1C1A);
+    border: none;
     border-radius: var(--radius-lg);
     text-align: center;
-    box-shadow: var(--shadow-md);
+    color: var(--paper, #F4F0E8);
+    box-shadow: var(--shadow-lg);
 }
 
 .fallback-eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.8125rem;
-    color: var(--terracota);
+    color: var(--terracota-ink);
     font-weight: 700;
     margin-bottom: 12px;
 }
@@ -612,8 +618,13 @@ ul {
     font-weight: 400;
     letter-spacing: -0.035em;
     line-height: 1.1;
-    color: var(--green-deep);
+    color: var(--paper, #F4F0E8);
     margin-bottom: 20px;
+}
+
+.services-fallback h3 em {
+    color: var(--terracota-ink);
+    font-style: italic;
 }
 
 .fallback-steps {
@@ -631,23 +642,32 @@ ul {
     max-width: 260px;
 }
 
-.step-number {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    color: var(--terracota);
-    line-height: 1;
+.step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--terracota-ink);
     flex-shrink: 0;
-    font-weight: 700;
+    background: rgba(228, 148, 108, 0.12);
+}
+
+.step-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--terracota-ink);
 }
 
 .fallback-step p {
     font-size: 0.95rem;
-    color: var(--text-dark);
+    color: var(--paper, #F4F0E8);
     line-height: 1.6;
 }
 
 .fallback-step strong {
-    color: var(--green-deep);
+    color: var(--paper, #F4F0E8);
 }
 
 .fallback-cta {
