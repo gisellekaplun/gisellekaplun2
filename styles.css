@@ -86,7 +86,7 @@ h3 {
     font-weight: 400;
 }
 
-h1 em, h2 em {
+h1 em, h2 em, h3 em {
     color: var(--terracota);
     font-style: italic;
 }
@@ -511,6 +511,8 @@ ul {
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
 }
 
 .servicio-card::before {
@@ -561,32 +563,12 @@ ul {
     color: var(--green-deep);
 }
 
-.servicio-card__list {
-    margin-bottom: 20px;
-}
-
-.servicio-card__list li {
-    padding: 6px 0;
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    border-bottom: 1px solid rgba(143, 191, 163, 0.4);
-    position: relative;
-    padding-left: 20px;
-}
-
-.servicio-card__list li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--terracota);
-    font-weight: 600;
-}
-
 .servicio-card__text {
     font-size: 0.95rem;
     color: var(--text-dark);
     margin-bottom: 20px;
-    line-height: 1.6;
+    line-height: 1.75;
+    flex-grow: 1;
 }
 
 .servicio-card__link {
@@ -596,11 +578,80 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    margin-top: auto;
 }
 
 .servicio-card__link:hover {
     gap: 10px;
     color: var(--terracota-soft);
+}
+
+/* --- ¿NO SABÉS CUÁL NECESITÁS? --- */
+.services-fallback {
+    margin-top: 64px;
+    padding: 48px 32px;
+    background-color: var(--beige-bg);
+    border: 1px solid rgba(175, 77, 53, 0.35);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.fallback-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8125rem;
+    color: var(--terracota);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.services-fallback h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    color: var(--green-deep);
+    margin-bottom: 20px;
+}
+
+.fallback-steps {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin: 36px 0;
+    text-align: left;
+}
+
+.fallback-step {
+    display: flex;
+    gap: 12px;
+    max-width: 260px;
+}
+
+.step-number {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--terracota);
+    line-height: 1;
+    flex-shrink: 0;
+    font-weight: 700;
+}
+
+.fallback-step p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.fallback-step strong {
+    color: var(--green-deep);
+}
+
+.fallback-cta {
+    margin-top: 8px;
 }
 
 /* --- EQUIPO --- */
@@ -1452,6 +1503,17 @@ ul {
 
     .situaciones__card-text {
         font-size: 0.9375rem;
+    }
+
+    .fallback-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        text-align: left;
+    }
+
+    .services-fallback {
+        padding: 40px 20px;
     }
 
     .faq--home {
