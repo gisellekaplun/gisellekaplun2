@@ -1149,9 +1149,17 @@ ul {
     font-weight: 400;
     letter-spacing: -0.035em;
     color: var(--green-deep);
-    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.situaciones__subtitle {
+    font-size: 1.1rem;
+    color: var(--green-body);
+    line-height: 1.6;
     text-align: center;
     margin-bottom: 34px;
+    font-style: italic;
 }
 
 .situaciones__carousel {
