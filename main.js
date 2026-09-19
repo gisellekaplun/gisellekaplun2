@@ -280,9 +280,10 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     function tarjetaHTML(s) {
+        var extra = s.numero === 4 ? ' align-bottom' : '';
         return '<li class="situaciones__card" role="group" aria-roledescription="slide" aria-label="Situación ' + s.numero + ' de 4">' +
             '<span class="situaciones__card-num">0' + s.numero + '</span>' +
-            '<img class="situaciones__card-img" src="' + s.imagen + '" alt="Ilustración de la situación ' + s.numero + '" loading="lazy">' +
+            '<img class="situaciones__card-img' + extra + '" src="' + s.imagen + '" alt="Ilustración de la situación ' + s.numero + '" loading="lazy">' +
             '<h3 class="situaciones__card-title">' + s.titulo + '</h3>' +
             '<p class="situaciones__card-text">' + s.texto + '</p>' +
             '</li>';

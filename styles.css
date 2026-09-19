@@ -1294,8 +1294,13 @@ ul {
     max-height: 170px;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+    object-position: center;
     border-radius: var(--radius-md);
     border: 1px solid var(--mint);
+}
+
+.situaciones__card-img.align-bottom {
+    object-position: center bottom;
 }
 
 .situaciones__card-title {
