@@ -37,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.classList.remove('nav--hidden');
         }
 
+        if (currentScroll > 60) {
+            nav.classList.add('is-scrolled');
+        } else {
+            nav.classList.remove('is-scrolled');
+        }
+
         if (currentScroll > 50) {
             nav.classList.add('nav--scrolled');
         } else {
