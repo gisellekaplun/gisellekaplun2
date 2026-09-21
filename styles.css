@@ -513,6 +513,12 @@ ul {
     line-height: 1.7;
 }
 
+.subrayado {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+}
+
 .section-header {
     text-align: center;
     margin-bottom: 60px;
