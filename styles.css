@@ -633,7 +633,7 @@ ul {
 .services-fallback {
     margin-top: 64px;
     padding: 48px 32px;
-    background-color: var(--ink, #1D1C1A);
+    background-color: var(--green-deep);
     border: none;
     border-radius: var(--radius-lg);
     text-align: center;
