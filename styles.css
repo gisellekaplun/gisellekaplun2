@@ -691,6 +691,11 @@ ul {
     border: 1px solid var(--terracota-ink);
     flex-shrink: 0;
     background: rgba(228, 148, 108, 0.12);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--terracota-ink);
+    line-height: 1;
 }
 
 .step-icon svg {
