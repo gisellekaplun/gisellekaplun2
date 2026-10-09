@@ -905,28 +905,6 @@ ul {
     font-weight: 500;
 }
 
-.servicio-extra__link {
-    display: inline-block;
-    text-align: center;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--terracota);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
-    transition: var(--transition);
-}
-
-.servicio-extra__link:hover {
-    color: var(--terracota-soft);
-}
-
-.servicio-extra__link:focus-visible {
-    outline: 3px solid var(--terracota-soft);
-    outline-offset: 2px;
-    border-radius: var(--radius-sm);
-}
-
 .servicio-extra .btn:focus-visible {
     outline: 3px solid var(--terracota-soft);
     outline-offset: 2px;
@@ -1572,6 +1550,7 @@ ul {
     padding: 70px 17px;
     background: linear-gradient(90deg, var(--beige-bg) 0%, var(--mint-soft) 100%);
     position: relative;
+    --situaciones-fade: 48px;
 }
 
 .situaciones__content {
@@ -1607,6 +1586,23 @@ ul {
     overflow: hidden;
     border-radius: var(--radius-lg);
     padding: 4px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--situaciones-fade), #000 calc(100% - var(--situaciones-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--situaciones-fade), #000 calc(100% - var(--situaciones-fade)), transparent 100%);
+}
+
+.situaciones__carousel.is-at-start .situaciones__viewport {
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - var(--situaciones-fade)), transparent 100%);
+    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - var(--situaciones-fade)), transparent 100%);
+}
+
+.situaciones__carousel.is-at-end .situaciones__viewport {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--situaciones-fade), #000 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--situaciones-fade), #000 100%);
+}
+
+.situaciones__carousel.is-at-start.is-at-end .situaciones__viewport {
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 .situaciones__track {
@@ -1627,12 +1623,12 @@ ul {
 
 .situaciones__card {
     flex: 0 0 auto;
-    width: calc(100% / var(--cards-visible, 2.2) - 12px);
+    width: calc(100% / var(--cards-visible, 2.8) - 12px);
     margin-right: 12px;
     background: var(--white);
     border: 1px solid var(--mint);
     border-radius: var(--radius-lg);
-    padding: 26px 24px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1656,8 +1652,7 @@ ul {
 
 .situaciones__card-img {
     width: 100%;
-    max-height: 170px;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 2 / 1;
     object-fit: cover;
     object-position: center;
     border-radius: var(--radius-md);
@@ -1709,6 +1704,17 @@ ul {
     background: var(--terracota);
     color: var(--beige-bg);
     border-color: var(--terracota);
+}
+
+.situaciones__btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.situaciones__btn:disabled:hover {
+    background: var(--white);
+    color: var(--green-deep);
+    border-color: var(--mint);
 }
 
 .situaciones__btn:focus-visible {
@@ -1904,10 +1910,11 @@ ul {
 @media (max-width: 760px) {
     .situaciones {
         padding: 50px 11px;
+        --situaciones-fade: 28px;
     }
 
     .situaciones__card {
-        width: calc(100% / var(--cards-movil, 1.2) - 6px);
+        width: calc(100% / var(--cards-movil, 1.15) - 6px);
         margin-right: 6px;
         padding: 24px 20px;
     }
@@ -1917,7 +1924,7 @@ ul {
     }
 
     .situaciones__card-text {
-        font-size: 0.9375rem;
+        font-size: 1rem;
     }
 
     .services-fallback {

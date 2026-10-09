@@ -276,6 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var track = document.getElementById("situacionesTrack");
     var prev = document.getElementById("situacionesPrev");
     var next = document.getElementById("situacionesNext");
+    var carousel = document.getElementById("situacionesCarousel");
     if (!track || !prev || !next) return;
 
     var situaciones = [
@@ -302,6 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var pos = 0;
     var setAncho = 0;    // ancho de 4 tarjetas + gaps (un set)
     var trackAncho = 0;  // ancho total = setAncho * 2
+    var pasoAncho = 0;   // ancho de una tarjeta + gap
     var autoplay = null;
     var parado = false;
     var moviendo = false, inicioX = 0, inicioPos = 0;
@@ -310,27 +312,41 @@ document.addEventListener("DOMContentLoaded", function () {
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function medir() {
-        var w = 0;
+        var gap = parseFloat(getComputedStyle(tarjetas[0]).marginRight) || 12;
+        var w = 0, ancho;
         for (var i = 0; i < situaciones.length; i++) {
-            w += tarjetas[i].getBoundingClientRect().width + 12;
+            ancho = tarjetas[i].getBoundingClientRect().width;
+            w += ancho + gap;
         }
         setAncho = w;
         trackAncho = w * 2;
+        pasoAncho = ancho + gap;
     }
 
     // --cards-visible por breakpoint
     function cardsResponsive() {
         var vp = track.parentElement.clientWidth;
-        var vis = vp < 760 ? 1.2 : 2.2;
+        var vis = vp < 760 ? 1.15 : 2.8;
         document.documentElement.style.setProperty("--cards-visible", vis);
-        document.documentElement.style.setProperty("--cards-movil", vis < 2 ? 1.2 : 2.2);
+        document.documentElement.style.setProperty("--cards-movil", vis);
     }
     cardsResponsive();
     window.addEventListener("resize", function () { cardsResponsive(); medir(); });
 
+    function actualizarBordes() {
+        var maxPos = Math.max(0, trackAncho - pasoAncho * 2);
+        if (carousel) {
+            carousel.classList.toggle("is-at-start", pos <= 1);
+            carousel.classList.toggle("is-at-end", pos >= maxPos - 1);
+        }
+        prev.disabled = pos <= 1;
+        next.disabled = pos >= maxPos - 1;
+    }
+
     function pintar(sinTransicion) {
         track.style.transition = sinTransicion ? "none" : "transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)";
         track.style.transform = "translateX(" + (-pos) + "px)";
+        actualizarBordes();
     }
 
     function loop() {
@@ -356,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function ir(dir) {
         parar();
-        var paso = tarjetas[0].getBoundingClientRect().width + 12;
+        var paso = pasoAncho;
         pos += dir * paso;
         if (pos < 0) pos = 0;
         if (pos > trackAncho - (paso * 2)) pos = trackAncho - (paso * 2);
@@ -393,7 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (Math.abs(dx) > 40) {
             ir(dx < 0 ? 1 : -1);
         } else {
-            var paso = tarjetas[0].getBoundingClientRect().width + 12;
+            var paso = pasoAncho;
             var idx = Math.round(pos / paso);
             pos = idx * paso;
             pintar(false);
