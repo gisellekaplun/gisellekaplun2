@@ -790,12 +790,14 @@ ul {
 
 /* -------- Servicio adicional: Tu web desde cero -------- */
 .servicio-extra {
-    margin-top: 40px;
+    margin: 28px auto 0;
+    max-width: 880px;
+    width: 100%;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 40px;
-    align-items: stretch;
-    padding: 44px;
+    grid-template-columns: 1.6fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 28px 30px;
     background: linear-gradient(135deg, var(--mint-soft) 0%, var(--beige-bg) 100%);
     border: 2px solid var(--mint);
     border-radius: var(--radius-lg);
@@ -817,20 +819,20 @@ ul {
 .servicio-extra__tag {
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--terracota);
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 }
 
 .servicio-extra__title {
     font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
     font-weight: 400;
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--green-deep);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .servicio-extra__title em {
@@ -839,18 +841,18 @@ ul {
 }
 
 .servicio-extra__subtitle {
-    font-size: 1rem;
+    font-size: 0.92rem;
     color: var(--green-body);
-    line-height: 1.7;
-    margin-bottom: 22px;
+    line-height: 1.65;
+    margin-bottom: 16px;
     max-width: 520px;
 }
 
 .servicio-extra__lista-titulo {
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--green-deep);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .servicio-extra__lista {
@@ -858,15 +860,15 @@ ul {
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 8px;
+    gap: 6px;
 }
 
 .servicio-extra__lista li {
     position: relative;
-    font-size: 0.92rem;
+    font-size: 0.86rem;
     color: var(--text-dark);
-    line-height: 1.6;
-    padding-left: 26px;
+    line-height: 1.55;
+    padding-left: 24px;
 }
 
 .servicio-extra__lista li::before {
@@ -882,12 +884,14 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 18px;
-    background: var(--white);
-    border: 1px solid var(--mint);
-    border-radius: var(--radius-md);
-    padding: 32px 28px;
-    box-shadow: var(--shadow-sm);
+    align-items: stretch;
+    gap: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    min-width: 190px;
 }
 
 .servicio-extra__precio {
@@ -1805,8 +1809,13 @@ ul {
 
     .servicio-extra {
         grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 32px 28px;
+        gap: 20px;
+        padding: 24px 22px;
+        max-width: 100%;
+    }
+
+    .servicio-extra__sidebar {
+        align-items: stretch;
     }
 
     .equipo__about {
@@ -1899,11 +1908,12 @@ ul {
     }
 
     .servicio-extra {
-        padding: 26px 20px;
+        padding: 20px 18px;
+        gap: 16px;
     }
 
     .servicio-extra__title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 }
 
