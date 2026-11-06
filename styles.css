@@ -537,8 +537,8 @@ ul {
 .servicios__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 48px;
+    gap: 16px;
+    margin-top: 36px;
 }
 
 .servicios__intro {
@@ -574,7 +574,7 @@ ul {
     background: var(--white);
     border: 1px solid var(--mint);
     border-radius: var(--radius-md);
-    padding: 30px 26px;
+    padding: 24px 20px;
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
@@ -589,10 +589,10 @@ ul {
 
 .pov-card__numero {
     position: absolute;
-    top: 20px;
-    right: 22px;
+    top: 16px;
+    right: 18px;
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 1;
     color: var(--mint-soft);
 }
@@ -600,15 +600,15 @@ ul {
 .pov-card__categoria {
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    font-size: 0.72rem;
+    font-size: 0.66rem;
     font-weight: 700;
     color: var(--terracota);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .pov-card__promesa {
     font-family: var(--font-heading);
-    font-size: 1.45rem;
+    font-size: 1.22rem;
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.15;
@@ -621,34 +621,34 @@ ul {
     background: var(--mint-soft);
     color: var(--green-deep);
     font-weight: 600;
-    font-size: 0.85rem;
-    padding: 4px 12px;
+    font-size: 0.76rem;
+    padding: 3px 10px;
     border-radius: 999px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     align-self: flex-start;
 }
 
 .pov-card__descripcion {
-    font-size: 0.92rem;
+    font-size: 0.84rem;
     color: var(--text-dark);
-    line-height: 1.65;
-    margin-bottom: 18px;
+    line-height: 1.5;
+    margin-bottom: 14px;
 }
 
 .pov-card__lista {
     list-style: none;
     padding: 0;
-    margin: 0 0 22px;
+    margin: 0 0 16px;
     flex-grow: 1;
 }
 
 .pov-card__lista li {
     position: relative;
-    font-size: 0.87rem;
+    font-size: 0.79rem;
     color: var(--text-dark);
-    line-height: 1.55;
-    padding-left: 24px;
-    margin-bottom: 10px;
+    line-height: 1.5;
+    padding-left: 20px;
+    margin-bottom: 8px;
 }
 
 .pov-card__lista li::before {
@@ -662,8 +662,8 @@ ul {
 
 .pov-card__precio {
     border-top: 1px solid var(--beige-warm);
-    padding-top: 18px;
-    margin-bottom: 20px;
+    padding-top: 14px;
+    margin-bottom: 14px;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -671,13 +671,13 @@ ul {
 
 .pov-card__monto {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 1.55rem;
     line-height: 1;
     color: var(--green-deep);
 }
 
 .pov-card__nota {
-    font-size: 0.78rem;
+    font-size: 0.71rem;
     color: var(--terracota);
     font-weight: 600;
 }
@@ -688,13 +688,13 @@ ul {
     justify-content: center;
     gap: 6px;
     width: 100%;
-    padding: 14px 18px;
+    padding: 11px 14px;
     border: 2px solid var(--terracota);
     border-radius: var(--radius-md);
     background: transparent;
     color: var(--terracota);
     font-weight: 600;
-    font-size: 0.92rem;
+    font-size: 0.84rem;
     text-align: center;
     transition: var(--transition);
 }
