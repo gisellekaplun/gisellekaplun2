@@ -301,6 +301,15 @@ ul {
     margin-bottom: 40px;
 }
 
+.hero__descriptor {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--terracota);
+    margin-bottom: 14px;
+}
+
 .hero__statement {
     font-family: var(--font-heading);
     font-size: clamp(2.2rem, 4.75vw, 3.3rem);
@@ -320,6 +329,10 @@ ul {
     color: var(--green-body);
     line-height: 1.8;
     max-width: 600px;
+}
+
+.hero__body + .hero__body {
+    margin-top: 16px;
 }
 
 .hero__actions {
