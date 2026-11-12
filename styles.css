@@ -2017,8 +2017,20 @@ ul {
         padding: 184px 24px 60px;
     }
 
+    .hero__descriptor {
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+    }
+
     .hero__statement {
-        font-size: 1.875rem;
+        font-size: 2rem;
+        line-height: 1.15;
+        margin-bottom: 16px;
+    }
+
+    .hero__body {
+        font-size: 1.0625rem;
+        line-height: 1.7;
     }
 
     .equipo__grid {
@@ -2099,12 +2111,21 @@ ul {
 }
 
 @media (max-width: 480px) {
+    .hero__descriptor {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 10px;
+    }
+
     .hero__statement {
-        font-size: 1.625rem;
+        font-size: 1.75rem;
+        line-height: 1.18;
+        margin-bottom: 14px;
     }
 
     .hero__body {
-        font-size: 1.1875rem;
+        font-size: 1rem;
+        line-height: 1.65;
     }
 
     .hero__actions {
