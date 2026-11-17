@@ -1217,10 +1217,10 @@ ul {
 }
 
 .equipo__about-text p {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     color: var(--text-dark);
-    line-height: 1.8;
-    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-bottom: 12px;
 }
 
 .equipo__about-text p:last-child {
