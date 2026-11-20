@@ -1,5 +1,5 @@
 /* =========================================
-   GISELLE KAPLUN SMM - JavaScript Principal
+   GISELLE KAPLUN - JavaScript Principal
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
